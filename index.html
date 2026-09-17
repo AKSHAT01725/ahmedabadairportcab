@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>We're Upgrading Our Website — Ahmedabad Airport Cab</title>
+<meta name="description" content="Ahmedabad Airport Cab's website is getting a fresh upgrade. Call or WhatsApp us anytime for airport pickup, drop, outstation and local cab bookings.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#191929;--muted:#707186;--purple:#6d24db;--blue:#416ff3;--soft:#f7f3ff;--line:#e6e1ef;--card:#fff;--wash:#fbfaff;--shadow:0 26px 80px rgba(63,33,115,.14);--radius:26px;--container:min(760px,92vw)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+.wip-page{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;background:#faf9fe}
+.wip-page::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 15% 12%, rgba(109,36,219,.14), transparent 42%),
+  radial-gradient(circle at 88% 18%, rgba(65,111,243,.14), transparent 40%),
+  radial-gradient(circle at 50% 100%, rgba(109,36,219,.10), transparent 46%);
+  z-index:0}
+.wip-page::after{content:"";position:absolute;inset:0;background-image:
+  linear-gradient(rgba(109,36,219,.035) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(109,36,219,.035) 1px, transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 72%);z-index:0}
+
+.wip-nav{position:relative;z-index:2;padding:26px 0 0}
+.wip-nav .container{width:var(--container);margin:auto;display:flex;justify-content:center}
+.brand-lockup{display:flex;align-items:center;gap:10px}
+.brand-lockup img{width:150px;height:auto;object-fit:contain}
+.brand-fallback{display:none;font-family:Manrope,sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.brand-fallback b{background:linear-gradient(90deg,#6820d0,#3e72f3);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+main.wip-wrap{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px 30px}
+.container{width:var(--container);margin:auto}
+
+.status-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 26px rgba(63,33,115,.08);font-size:12px;font-weight:800;color:#4a475b;margin-bottom:22px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#f2a93b;box-shadow:0 0 0 0 rgba(242,169,59,.55);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,169,59,.55)}70%{box-shadow:0 0 0 9px rgba(242,169,59,0)}100%{box-shadow:0 0 0 0 rgba(242,169,59,0)}}
+
+.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);font-weight:900;margin-bottom:10px}
+.wip-title{font-family:Manrope,Inter,sans-serif;font-size:clamp(32px,5.4vw,54px);letter-spacing:-.05em;line-height:1.05;margin:0 0 16px}
+.wip-title span{background:linear-gradient(90deg,#6820d0,#3e72f3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wip-copy{max-width:520px;margin:0 auto 30px;color:#5e6073;font-size:16px}
+
+.progress-shell{width:min(360px,80vw);height:8px;border-radius:999px;background:#ece7f6;overflow:hidden;margin:0 auto 34px;position:relative}
+.progress-bar{position:absolute;inset:0 auto 0 0;width:40%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--blue));animation:loading 1.8s ease-in-out infinite}
+@keyframes loading{0%{left:-40%}50%{left:60%}100%{left:100%}}
+
+.contact-card{width:100%;background:rgba(255,255,255,.92);border:1px solid #e2dced;border-radius:24px;padding:26px 24px;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+.contact-card h2{font-family:Manrope,Inter,sans-serif;font-size:19px;letter-spacing:-.02em;margin-bottom:6px}
+.contact-card p{color:#6d6e80;font-size:13px;margin-bottom:18px}
+.contact-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);padding:13px 20px;border-radius:14px;font-weight:800;font-size:13px;cursor:pointer;transition:.2s;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;border:0;box-shadow:0 14px 30px rgba(109,36,219,.22)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{background:#fff}
+.btn-outline:hover{border-color:#c7b7e9;color:var(--purple);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+.wip-footer{position:relative;z-index:2;padding:26px 0 30px;text-align:center}
+.wip-footer .container{display:flex;flex-direction:column;align-items:center;gap:8px}
+.wip-footer p{font-size:12px;color:#8b8c9e}
+.wip-footer a{font-weight:800;color:#5c5a6e}
+.wip-footer a:hover{color:var(--purple)}
+
+.floaters{position:fixed;right:18px;bottom:18px;display:grid;gap:10px;z-index:90}
+.float{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 14px 30px rgba(48,31,76,.18);transition:.25s}
+.float:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(48,31,76,.24)}
+.wa{background:#16b96f}
+.call{background:linear-gradient(135deg,var(--purple),var(--blue))}
+.float svg{width:22px;height:22px}
+
+body{animation:pageIn .7s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media(max-width:480px){.contact-actions{flex-direction:column}.contact-actions .btn{width:100%}}
+</style>
+</head>
+<body>
+<div class="wip-page">
+
+  <nav class="wip-nav"><div class="container">
+    <a class="brand-lockup" href="index.html" aria-label="Ahmedabad Airport Cab">
+      <img src="assets/logo.png" alt="Ahmedabad Airport Cab" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-fallback">Ahmedabad <b>Airport Cab</b></span>
+    </a>
+  </div></nav>
+
+  <main class="wip-wrap"><div class="container">
+    <div class="status-pill"><span class="status-dot"></span> Website Under Construction</div>
+    <div class="kicker">AHMEDABAD • AIRPORT • GUJARAT</div>
+    <h1 class="wip-title">We're building a <span>better way to book</span> your cab.</h1>
+    <p class="wip-copy">Our new website is on its way — with faster booking, live rates and easier routes for airport, outstation, local and corporate travel. In the meantime, our cabs are running as usual.</p>
+
+    <div class="progress-shell"><div class="progress-bar"></div></div>
+
+    <div class="contact-card">
+      <h2>Need a cab right now?</h2>
+      <p>Call or WhatsApp us directly — we're available 24x7.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/919724429334?text=Hello%20Ahmedabad%20Airport%20Cab%2C%20I%20want%20to%20book%20a%20cab." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.3.2 11.85c0 2.09.55 4.14 1.6 5.94L.1 23.9l6.26-1.64a11.84 11.84 0 0 0 5.71 1.46h.01c6.54 0 11.87-5.3 11.87-11.85 0-3.16-1.3-6.15-3.43-8.39Zm-8.44 18.18h-.01a9.8 9.8 0 0 1-5-1.36l-.36-.21-3.71.98.99-3.61-.23-.37a9.83 9.83 0 0 1-1.51-5.24C2.25 6.42 6.66 2.05 12.08 2.05c2.62 0 5.09 1.02 6.94 2.87a9.72 9.72 0 0 1 2.89 6.94c0 5.41-4.4 9.8-9.83 9.8Zm5.38-7.35c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.44-.87-.77-1.46-1.73-1.63-2.02-.17-.3-.02-.46.13-.61.13-.13.29-.34.44-.51.15-.17.2-.3.3-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49s1.08 2.89 1.23 3.09c.15.2 2.12 3.23 5.14 4.53.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.72-.7 1.96-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35Z"/></svg>
+          WhatsApp Us
+        </a>
+        <a class="btn btn-outline" href="tel:+91 97244 29334">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.28-.28.67-.37 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg>
+          +91 97244 29334
+        </a>
+        <a class="btn btn-outline" href="mailto:ahmedabadairportcab@gmail.com">Email Us</a>
+      </div>
+    </div>
+  </div></main>
+
+  <footer class="wip-footer"><div class="container">
+    <p>1600 Bhavsar No Khacho, Opp Swaminarayan Temple, Ahmedabad — 380018</p>
+    <p>© 2026 Ahmedabad Airport Cab. All Rights Reserved. — <a href="tel:+91 97244 29334">Call for immediate booking</a></p>
+  </div></footer>
+</div>
+
+<div class="floaters">
+  <a class="float wa" href="https://wa.me/919724429334?text=Hello%20Ahmedabad%20Airport%20Cab%2C%20I%20want%20to%20book%20a%20cab." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.3.2 11.85c0 2.09.55 4.14 1.6 5.94L.1 23.9l6.26-1.64a11.84 11.84 0 0 0 5.71 1.46h.01c6.54 0 11.87-5.3 11.87-11.85 0-3.16-1.3-6.15-3.43-8.39Zm-8.44 18.18h-.01a9.8 9.8 0 0 1-5-1.36l-.36-.21-3.71.98.99-3.61-.23-.37a9.83 9.83 0 0 1-1.51-5.24C2.25 6.42 6.66 2.05 12.08 2.05c2.62 0 5.09 1.02 6.94 2.87a9.72 9.72 0 0 1 2.89 6.94c0 5.41-4.4 9.8-9.83 9.8Zm5.38-7.35c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.44-.87-.77-1.46-1.73-1.63-2.02-.17-.3-.02-.46.13-.61.13-.13.29-.34.44-.51.15-.17.2-.3.3-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49s1.08 2.89 1.23 3.09c.15.2 2.12 3.23 5.14 4.53.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.72-.7 1.96-1.37.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35Z"/></svg>
+  </a>
+  <a class="float call" href="tel:+91 97244 29334" aria-label="Call">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.28-.28.67-.37 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg>
+  </a>
+</div>
+</body>
+</html>
