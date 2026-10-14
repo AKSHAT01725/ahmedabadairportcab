@@ -52,7 +52,7 @@ function cardHtml(rate) {
 
   return `
   <article class="rate-card" data-vehicle-rate="${escapeHtml(name)}">
-    <div class="rate-photo" style="background-image:url('${escapeHtml(image)}'),${gradient}"></div>
+    <div class="rate-photo" style="background-image:${gradient}"><img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit"></div>
     <div class="rate-body">
       <h3>${escapeHtml(name)}</h3>
       <div class="meta"><span>${escapeHtml(persons)} Persons</span><span>${escapeHtml(bags)} Bags</span></div>
@@ -104,7 +104,17 @@ function applyToExistingCards(rates) {
     const photo = card.querySelector(".rate-photo");
     if (photo && image) {
       const gradient = rate.gradient || "linear-gradient(135deg,#1b1730,#6a45dc)";
-      photo.style.backgroundImage = `url('${image}'),${gradient}`;
+      photo.style.backgroundImage = gradient;
+      let pimg = photo.querySelector("img");
+      if (!pimg) {
+        pimg = document.createElement("img");
+        pimg.loading = "lazy";
+        pimg.decoding = "async";
+        pimg.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit";
+        photo.appendChild(pimg);
+      }
+      pimg.alt = name;
+      if (pimg.getAttribute("src") !== image) pimg.setAttribute("src", image);
     }
 
     const btn = card.querySelector("button.btn, .btn-primary");
