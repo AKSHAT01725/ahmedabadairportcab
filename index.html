@@ -254,7 +254,7 @@ html{scroll-behavior:smooth}body{animation:pageEnter .6s cubic-bezier(.22,.61,.3
   }
 }
 
-/* Mobile: From and To are stacked; the two dates sit side-by-side; time and phone stay full width. */
+/* Mobile: From and To stacked; Pickup Date + Pickup Time side-by-side; phone full width. */
 @media(max-width:720px){
   .booking{width:100%;max-width:100%;overflow:visible}
   .booking:not(.is-local) .fields{
@@ -265,13 +265,14 @@ html{scroll-behavior:smooth}body{animation:pageEnter .6s cubic-bezier(.22,.61,.3
   }
   .booking:not(.is-local) .location-pair,
   .booking:not(.is-local) .field-package,
-  .booking:not(.is-local) .field-time,
+  .booking:not(.is-local) .field-return-date,
   .booking:not(.is-local) .field-phone{grid-column:1/-1}
   .booking:not(.is-local) .field-pickup-date,
-  .booking:not(.is-local) .field-return-date{grid-column:span 1;min-width:0}
+  .booking:not(.is-local) .field-time{grid-column:span 1;min-width:0}
   .booking:not(.is-local) .field,
   .booking:not(.is-local) .field input{min-width:0;max-width:100%}
-  .booking:not(.is-local) .field input[type="date"]{
+  .booking:not(.is-local) .field input[type="date"],
+  .booking:not(.is-local) .field input#timeText{
     display:block;
     width:100%;
     min-width:0;
@@ -280,6 +281,67 @@ html{scroll-behavior:smooth}body{animation:pageEnter .6s cubic-bezier(.22,.61,.3
     font-size:14px;
   }
   .booking:not(.is-local) .field label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+
+/* Compact mobile form – match ahmedabadcab.com style */
+@media(max-width:720px){
+  .booking-hero{padding:18px 0 28px;min-height:0}
+  .hero-title{font-size:28px;margin:0 0 14px;line-height:1.15}
+  .booking{padding:14px 12px 16px;border-radius:18px;box-shadow:0 10px 28px rgba(40,25,80,.12)}
+  .booking-top{display:none}
+  .booking-category{margin-bottom:8px}
+  .booking-types{gap:6px}
+  .booking-types button{padding:9px 6px;font-size:12.5px;border-radius:12px}
+  .booking-mode{margin-bottom:10px}
+  .fields{gap:10px}
+  /* Keep label inside the bordered field box */
+  .field{
+    min-height:0;
+    padding:8px 12px;
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .field label{
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    color:#767689;
+    margin:0 0 4px 0;
+    line-height:1.2;
+    letter-spacing:.02em;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .field input,
+  .field select{
+    width:100%;
+    border:0;
+    outline:0;
+    background:none;
+    padding:0;
+    margin:0;
+    min-height:0;
+    font-size:14px;
+    font-weight:800;
+    color:#222130;
+    border-radius:0;
+    line-height:1.3;
+  }
+  .location-pair{gap:16px}
+  .swap{width:36px;height:36px;font-size:14px}
+  .submit-row{margin-top:12px}
+  .submit-row .btn{width:100%;padding:14px 16px;font-size:15px;border-radius:14px}
+}
+@media(max-width:470px){
+  .hero-title{font-size:24px}
+  .booking-types button{font-size:11.5px;padding:8px 3px}
+  .field{padding:7px 10px}
+  .field label{font-size:10.5px;margin-bottom:3px}
+  .field input,
+  .field select{font-size:13.5px}
 }
 </style>
 <style id="local-form-css">
@@ -295,7 +357,14 @@ html{scroll-behavior:smooth}body{animation:pageEnter .6s cubic-bezier(.22,.61,.3
 .booking.is-local .location-pair{grid-template-columns:1fr}
 .booking.is-local .fields{grid-template-columns:repeat(5,1fr)}
 @media(max-width:1100px){.booking.is-local .fields{grid-template-columns:1fr 1fr}.booking.is-local .fields>.field:last-child{grid-column:1/-1;max-width:none}}
-@media(max-width:720px){.booking.is-local .fields{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .booking.is-local .fields{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+  .booking.is-local .location-pair,
+  .booking.is-local .field-package,
+  .booking.is-local .field-phone{grid-column:1/-1}
+  .booking.is-local .field-pickup-date,
+  .booking.is-local .field-time{grid-column:span 1;min-width:0}
+}
 </style>
 <style>
 .rate-modal-overlay{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(20,14,34,.5);backdrop-filter:blur(4px);padding:20px}
@@ -314,9 +383,7 @@ body.modal-locked{overflow:hidden}
 <header class="site-nav"><div class="site-nav-inner"><a class="site-brand" href="index.html"><img src="logo.webp" alt="Ahmedabad Airport Cab" width="180" height="120" decoding="async"></a><nav class="site-nav-links"><a href="index.html" class="active">Home</a><a href="#services">Our Services</a><a href="#routes">Routes</a><a href="#rates">Round Trip</a><a href="#gujarat-tours">Gujarat Tours</a><a href="about.html">About</a><a href="#contact">Contact</a></nav><div class="site-nav-actions"><a class="nav-btn nav-btn-outline" href="tel:+919724429334">+91 97244 29334</a><a class="nav-btn nav-btn-primary" href="#booking">Inquiry Now</a><a class="nav-btn nav-btn-primary nav-btn-contact" href="#contact">Contact</a></div><button class="site-menu" type="button" onclick="toggleSiteMenu(this)" aria-label="Open menu">&#9776;</button></div></header>
 <main>
 <section class="booking-hero" id="home"><div class="container booking-wrap">
-<div class="kicker" style="text-align:center">AHMEDABAD • AIRPORT • GUJARAT</div>
 <h1 class="hero-title">Book Your <span>Ahmedabad Cab</span> with confidence.</h1>
-<p class="hero-copy">Airport pickup, airport drop, one-way, round-trip, local, corporate and outstation travel — with a simple direct WhatsApp booking journey.</p>
 <form class="booking" id="booking" onsubmit="submitBooking(event)">
   <div class="booking-top"><div><div class="kicker">BOOK YOUR RIDE</div><h2>Find your perfect ride</h2></div></div>
   <div class="booking-types booking-category"><button type="button" class="active" data-trip="Outstation" onclick="setCategory(this)">Outstation</button><button type="button" data-trip="Local" onclick="setCategory(this)">Local</button><button type="button" data-trip="Airport" onclick="setCategory(this)">Airport</button><button type="button" data-trip="Corporate" onclick="setCategory(this)">Corporate</button></div>
@@ -324,8 +391,8 @@ body.modal-locked{overflow:hidden}
   <input id="trip" type="hidden" value="Outstation"><input id="tripMode" type="hidden" value="One Way">
   <div class="fields">
     <div class="location-pair">
-      <div class="field"><label for="from"><span class="lbl-def">From</span><span class="lbl-local">From City</span></label><input id="from" autocomplete="off" value="Ahmedabad" required placeholder="Search city or airport"><div class="suggest" id="fromSuggest"></div></div>
-      <div class="field field-to"><label for="to">To</label><input id="to" autocomplete="off" value="Ahmedabad" required placeholder="Search destination"><div class="suggest" id="toSuggest"></div></div>
+      <div class="field"><label for="from"><span class="lbl-def">From</span><span class="lbl-local">From City</span></label><input id="from" autocomplete="off" value="Ahmedabad" required placeholder="From City"><div class="suggest" id="fromSuggest"></div></div>
+      <div class="field field-to"><label for="to">To</label><input id="to" autocomplete="off" value="Ahmedabad" required placeholder="To City"><div class="suggest" id="toSuggest"></div></div>
       <button class="swap" type="button" aria-label="Swap locations">⇄</button>
     </div>
     <div class="field field-package"><label for="package">Package</label><select id="package" disabled><option value="08 Hour 80 Km">08 Hour 80 Km</option><option value="12 Hour 120 Km">12 Hour 120 Km</option></select></div>
