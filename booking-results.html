@@ -75,6 +75,19 @@ body.modal-locked{overflow:hidden}
 .floaters{position:fixed;right:18px;bottom:18px;display:grid;gap:10px;z-index:90}.float{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 14px 30px rgba(48,31,76,.18);font-size:19px}.wa{background:#16b96f}.call{background:linear-gradient(135deg,var(--purple),var(--blue))}
 @media(max-width:720px){.nav-inner{height:72px}.brand img{width:165px;height:58px}.page-top{padding:22px 0 0}.booking-top{align-items:flex-start;flex-direction:column;gap:5px}.booking-note{text-align:left}.booking-category{margin-bottom:12px}.booking-mode{display:grid;max-width:none}.fields{grid-template-columns:1fr}.location-pair{grid-template-columns:1fr;gap:24px;padding-bottom:0}.swap{left:50%;top:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:42px;height:42px}.fields>.field:last-child{max-width:none}.submit-row .btn{width:100%}.time-grid{grid-template-columns:1fr 1fr 1fr}.picker{max-width:100%}.modal-card{padding:20px 16px}}
 @media(max-width:470px){.booking-types button{font-size:12px;padding:10px 4px}}
+
+/* Accessibility refinements: readable contrast and comfortable touch targets */
+.contact-lines strong{color:#55566a}
+.carousel-meta,.rate-body .meta,.tour-meta,.review-meta{color:#55566a}
+.carousel-dot{width:24px;height:24px;min-width:24px;min-height:24px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;position:relative}
+.carousel-dot::before{content:"";display:block;width:7px;height:7px;border-radius:50%;background:#766b91}
+.carousel-dot.active{width:24px;min-width:24px;height:24px;border-radius:50%;background:transparent}
+.carousel-dot.active::before{width:18px;height:7px;border-radius:999px;background:#5420b8}
+.carousel-dots{gap:8px;align-items:center}
+.swap{min-width:44px;min-height:44px}
+#from,#to,#timeText,#cname,#cphone{min-height:44px}
+.message-card label{color:#383849}
+
 </style>
 <style>
 /* === Unified site navbar (shared across all pages) === */
@@ -164,7 +177,7 @@ body.modal-locked{overflow:hidden}
         <div class="field field-package"><label for="package">Package</label><select id="package" disabled><option value="08 Hour 80 Km">08 Hour 80 Km</option><option value="12 Hour 120 Km">12 Hour 120 Km</option></select></div>
     <div class="field field-pickup-date"><label for="date"><span class="lbl-def">Pickup Date</span><span class="lbl-local">Date</span></label><input id="date" type="date" required></div>
         <div class="field field-return-date"><label for="returnDate">Return Date</label><input id="returnDate" type="date"></div>
-        <div class="field field-time"><label><span class="lbl-def">Pickup Time</span><span class="lbl-local">Time</span></label><input id="timeText" type="text" readonly aria-label="Pickup time" onclick="openTimePicker()"><div class="picker" id="timePicker"><div class="time-grid"><select id="hourSel"></select><select id="minuteSel"></select><select id="ampmSel"><option>AM</option><option>PM</option></select></div><div class="picker-actions"><button type="button" class="cancel" onclick="closeTimePicker()">Cancel</button><button type="button" class="apply" onclick="applyTimePicker()">Apply</button></div></div></div>
+        <div class="field field-time"><label for="timeText"><span class="lbl-def">Pickup Time</span><span class="lbl-local">Time</span></label><input id="timeText" type="text" readonly aria-label="Pickup time" autocomplete="off" onclick="openTimePicker()"><div class="picker" id="timePicker"><div class="time-grid"><select id="hourSel"></select><select id="minuteSel"></select><select id="ampmSel"><option>AM</option><option>PM</option></select></div><div class="picker-actions"><button type="button" class="cancel" onclick="closeTimePicker()">Cancel</button><button type="button" class="apply" onclick="applyTimePicker()">Apply</button></div></div></div>
         <div class="field field-phone"><label for="phone">Phone Number</label><input id="phone" required type="tel" inputmode="numeric" maxlength="10" placeholder="Enter mobile number"></div>
       </div>
       <div class="submit-row"><button class="btn btn-primary" type="submit">Find Cabs</button></div>
