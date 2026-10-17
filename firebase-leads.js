@@ -135,7 +135,8 @@ function buildMessage(lead) {
  * @param {Object} lead - free-form fields describing the enquiry, plus a "type".
  */
 async function submit(lead) {
-  const page = window.location.pathname.split("/").pop() || "index.html";
+  const seg = window.location.pathname.split("/").pop();
+  const page = seg ? (/\.html$/.test(seg) ? seg : seg + ".html") : "index.html";
   const receivedAt = new Date().toLocaleString("en-IN", {
     day: "2-digit", month: "short", year: "numeric",
     hour: "2-digit", minute: "2-digit"

@@ -4,6 +4,15 @@ import {
   getFirestore, collection, query, orderBy, onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+// Old blog records may still hold "page.html" links; show them as clean URLs.
+function cleanBlogUrl(u) {
+  u = String(u || "").trim();
+  if (!u || u.charAt(0) === "#" || /^(https?:)?\/\//i.test(u) || /^(mailto|tel):/i.test(u)) return u || "#";
+  const m = u.match(/^\/?([A-Za-z0-9_-]+)\.html([?#].*)?$/);
+  if (m) return (m[1] === "index" ? "/" : "/" + m[1]) + (m[2] || "");
+  return u.charAt(0) === "/" ? u : "/" + u;
+}
+
 const firebaseConfig = {
   apiKey: "AIzaSyDDMqMXdar86EawwYdMhwSdKKDU-eijSRc",
   authDomain: "ahmedabad-airport-cab.firebaseapp.com",
@@ -29,7 +38,7 @@ function cardHtml(b, index) {
   const num = String(index + 1).padStart(2, "0");
   const title = b.title || "Blog";
   const paragraph = b.paragraph || "";
-  const url = b.url || "#";
+  const url = cleanBlogUrl(b.url || "#");
   const image = b.image || "blog-ahmedabad-airport-cab-service.webp";
   return `<article class="blog-card" data-page="${page}">
 <a class="blog-card-img" href="${escapeHtml(url)}"><img src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy"></a>
